@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class ProximitySensorActivity extends Activity implements SensorEventListener {
@@ -18,6 +19,8 @@ public class ProximitySensorActivity extends Activity implements SensorEventList
     private TextView mTextMaxRange;
     private TextView mTextValue;
     private TextView mTextFace;
+
+    static final String TAG = "PROX_SENSOR";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class ProximitySensorActivity extends Activity implements SensorEventList
 
     @Override
     protected void onResume() {
+        Log.d(TAG, "onResume()");
         super.onResume();
 
         mProxSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -53,6 +57,7 @@ public class ProximitySensorActivity extends Activity implements SensorEventList
 
     @Override
     protected void onPause() {
+        Log.d(TAG, "onPause()");
         super.onPause();
 
         if (mSensorManager != null) {
